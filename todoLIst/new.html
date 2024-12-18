@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todolist</title>
+    <style>
+
+body {
+            height: 100vh;
+            background-color: #f1f1f1;
+            align-items: center;
+            padding: 0;
+            font-family:  Helvetica,  serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            
+            
+        }
+
+        .input-container {
+            margin-top: 20px;
+            gap: 10px;
+            display: flex;
+        }
+
+        input {
+            border: 1px solid #078ffd;
+            outline: none;
+            width: 300px;
+            padding: 10px;
+            border: 1px solid #078ffd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        input:focus {
+            border-color: #e66e0c;
+        }
+
+        button {
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;   
+            background-color: #38d410;
+            color: rgb(22, 20, 22);
+            border: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #d84e6c;
+        }
+
+        #list {
+            margin-top: 25px;
+            width: 370px;
+            background: rgb(192, 185, 185);
+            padding: 10px;
+            border-radius: 4px;
+        }
+
+       
+        .todo-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 6px;
+            border-bottom: 1px solid   #f1f1f1;
+            transition: background-color 0.3s;
+        }
+
+        .todo-item:last-child {
+            border-bottom: none;
+        }
+        .todo-item p {
+            margin: 0;
+            font-size: 17px;
+            color: #111011;
+        }
+    
+        .todo-item:hover {
+            background-color: #f1f1f1ec; 
+            border-radius: 6px;
+            transition: background-color 0.2s;
+        }
+
+        .delete-btn {
+            padding: 5px 10px;
+            font-size: 14px;
+            background-color: #b643d3;
+            color: #382f38;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .delete-btn:hover {
+            background-color: #24ddd4;
+        }
+    </style>
+</head>
+<body>
+    <div class="input-container">
+        <input type="text" id="content" placeholder="Enter your task...">
+        <button onclick="Todolist()">Add</button>
+    </div>
+
+    
+    <div id="list"></div>
+
+    
+            <script>
+               
+            
+        function Todolist() {
+            var content = document.getElementById("content").value; 
+            
+            // checking the input field is empty or not 
+            if (content.trim() !== "") { 
+               
+                var todoItem = document.createElement("div");//stroing the div 
+                todoItem.classList.add("todo-item");// adding class name
+
+                
+                var p = document.createElement("p");
+                p.textContent = content;
+
+            
+                var deleteBtn = document.createElement("btn");
+                deleteBtn.textContent = "Delete";
+                deleteBtn.classList.add("delete-btn"); //adding class name
+
+            
+                deleteBtn.onclick = function() {
+                    todoItem.remove(); 
+                };
+
+                
+                todoItem.appendChild(p);
+                todoItem.appendChild(deleteBtn);
+
+
+                document.getElementById("list").appendChild(todoItem);
+
+
+                document.getElementById("content").value = ""; //after taken the value i make it empty
+            } else {
+                alert("Enter Text!");
+            }
+        }
+
+
+            </script>
+
+        </body>
+</html>
